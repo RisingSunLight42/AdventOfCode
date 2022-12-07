@@ -36,10 +36,7 @@ def recursive_files_part_one(dict_tree: dict, file_list: list):
 def part_one():
     file_size_list = []
     recursive_files_part_one(dict_tree, file_size_list)
-    sum_file = 0
-    for file_size in file_size_list:
-        sum_file += file_size
-    print(sum_file)
+    print(sum(file_size_list))
 
 
 def recursive_files_part_two(dict_tree: dict, space_needed, dir_to_delete_size: list):
