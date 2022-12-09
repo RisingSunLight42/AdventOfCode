@@ -25,13 +25,15 @@ def is_touching(coord_H, coord_T):
 
 
 def move_tail(coord_H, coord_T):
+    comparison1 = -2 * int(coord_H[1] < coord_T[1])
+    comparison0 = -2 * int(coord_H[0] < coord_T[0])
     if (coord_H[0] == coord_T[0]):
-        coord_T[1] += 1 + (-2 * int(coord_H[1] < coord_T[1]))
+        coord_T[1] += 1 + comparison1
     elif (coord_H[1] == coord_T[1]):
-        coord_T[0] += 1 + (-2 * int(coord_H[0] < coord_T[0]))
+        coord_T[0] += 1 + comparison0
     else:
-        coord_T[0] += 1 + (-2 * int(coord_H[0] < coord_T[0]))
-        coord_T[1] += 1 + (-2 * int(coord_H[1] < coord_T[1]))
+        coord_T[0] += 1 + comparison0
+        coord_T[1] += 1 + comparison1
     return coord_T
 
 
