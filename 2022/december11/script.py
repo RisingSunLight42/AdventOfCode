@@ -117,7 +117,7 @@ def do_file():
 
 
 def execute(round, relief_number, monkey_list):
-    for i in range(round):
+    for _ in range(round):
         for monkey in monkey_list:
             monkey.do_round(monkey_list, relief_number)
     list_inspected = []
