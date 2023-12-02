@@ -38,17 +38,11 @@ def part_two():
     total = 0
     for line in lines:
         dict_actual_game = { "red": 0, "blue": 0, "green": 0 }
-        game_list = line.split(":")
-        game_id = int(game_list[0].split(" ")[1])
-        cube_set_string = game_list[1]
-        cube_sets = cube_set_string.split(";")
-        for cubes in cube_sets:
-            number_and_cube_list = cubes.split(",")
-            for number_and_cube in number_and_cube_list:
-                [number, color] = number_and_cube.strip().split(" ")
-                number = int(number)
-                if (dict_actual_game[color] < number):
-                    dict_actual_game[color] = number
+        for number_and_cube in re.findall(r'\d+ red|\d+ green|\d+ blue', line):
+            [number, color] = number_and_cube.strip().split(" ")
+            number = int(number)
+            if (dict_actual_game[color] < number):
+                dict_actual_game[color] = number
         total += dict_actual_game["green"] * dict_actual_game["red"] * dict_actual_game["blue"]
     print(total)
     
