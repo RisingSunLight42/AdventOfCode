@@ -9,26 +9,15 @@ with open("./input.txt", 'r', encoding='utf-8') as file:
 
 def part_one(red=12, green=13, blue=14):
     total = 0
-    game_passing = []
     for line in lines:
         dict_actual_game = { "red": 0, "blue": 0, "green": 0 }
-        game_list = line.split(":")
-        game_id = int(game_list[0].split(" ")[1])
-        cube_set_string = game_list[1]
-        cube_sets = cube_set_string.split(";")
-        for cubes in cube_sets:
-            number_and_cube = cubes.split(",")
-            for number_and_cube in number_and_cube_list:
-                [number, color] = number_and_cube.strip().split(" ")
-                number = int(number)
-                if (dict_actual_game[color] < number):
-                    dict_actual_game[color] = number
-        if (dict_actual_game["red"] <= red and dict_actual_game["green"] <= green and dict_actual_game["blue"] <= blue):
-            game_passing.append(int(game_id))
-    
-    for game_id in game_passing:
-        total += game_id
-
+        game_id = int(re.search(r"\d+:", line).group()[0:-1])
+        for number_and_cube in re.findall(r'\d+ red|\d+ green|\d+ blue', line):
+            [number, color] = number_and_cube.split(" ")
+            number = int(number)
+            if (dict_actual_game[color] < number):
+                dict_actual_game[color] = number
+        total += game_id  * (dict_actual_game["red"] <= red and dict_actual_game["green"] <= green and dict_actual_game["blue"] <= blue)
     print(total)
         
 
