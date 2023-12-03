@@ -44,7 +44,7 @@ def do_validation_part_two(dictionnary, coordinate_save, valid_list, num, is_val
 # Part two
 def part_two():
     # Search for numbers in the lines and when found, check around them to find special character *
-    # if the character is found, add the number corresponding in a dictionny with in key, the coordinates of the *
+    # if the character is found, add the number corresponding in a dictionnary with in key, the coordinates of the *
     valid_list = []
     valid_coordinates = {}
     num = '0'
