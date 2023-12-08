@@ -1,10 +1,10 @@
-import re
+from parse import parse
 from math import lcm
 
 with open("./input.txt", 'r', encoding='utf-8') as file:
     directions, nodes = file.read().split("\n\n")
 
-nodes = {re.findall(r"[A-Z]{3}", node)[0]: (re.findall(r"[A-Z]{3}", node)[1], re.findall(r"[A-Z]{3}", node)[2]) for node in nodes.split("\n")}
+nodes = {start: (left, right) for start, left, right in [parse("{} = ({}, {})", node).fixed for node in nodes.split("\n")]}
 
 directions_mapping = { "L": 0, "R": 1 }
 
