@@ -38,10 +38,8 @@ def count_possible_arrangements(springs, numbers):
         and (numbers[0] == len(springs) or springs[numbers[0]] != '#'):
             # we remove the number of damaged springs wanted + 1 for the gap, and the number
             result += count_possible_arrangements(springs[numbers[0] + 1:], numbers[1:])
-        else:
-            result += 0
-    
     return result
+
 
 def part_one(springs=springs, numbers=numbers):
     total = 0
@@ -57,6 +55,7 @@ def part_two(springs=springs, numbers=numbers):
     for i in range(len(springs)):
         total += count_possible_arrangements(springs[i], numbers[i])
     print(total)
+
 
 part_one()
 part_two()
